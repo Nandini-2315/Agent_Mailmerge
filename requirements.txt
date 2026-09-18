@@ -1,0 +1,17 @@
+# Google Agent Development Kit (ADK) and Gemini
+google-adk>=2.9.1
+google-genai>=2.24.0
+
+# Document and Spreadsheet Processing
+python-docx>=1.2.0
+pandas>=2.2.0
+openpyxl>=3.1.5
+lxml>=5.0.0
+
+# File Monitoring and Configuration
+watchdog>=6.0.0
+PyYAML>=6.0.2
+python-dotenv>=1.0.1
+
+# Testing
+pytest>=8.0.0

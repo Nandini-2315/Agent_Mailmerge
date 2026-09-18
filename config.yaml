@@ -1,0 +1,40 @@
+# Certificate Generation & Excel Change Detection Configuration
+
+# Input & Output Paths
+paths:
+  excel_file: "input/studentsdata.xlsx"
+  template_file: "input/certificatetemp.docx"
+  fallback_template_file: "input/Student_Certificate.docx"
+  output_dir: "output"
+  manifest_file: "state/certificate_manifest.json"
+  log_file: "logs/certificate_agent.log"
+
+# Column and Identity Settings
+columns:
+  # Primary unique identifier column
+  id_column: "Certificate_ID"
+  # Fallback candidate columns if primary id_column is not present
+  fallback_id_columns:
+    - "Certificate_ID"
+    - "Roll_Number"
+    - "Student_ID"
+    - "ID"
+  # Minimum required columns for valid generation
+  required_columns:
+    - "Certificate_ID"
+    - "Name"
+
+# Change Detection Policy
+policy:
+  # If true, delete the PDF file when a student record is removed from Excel.
+  # If false, mark the record as deleted in manifest but preserve the existing PDF file.
+  delete_removed_certificates: false
+
+# File Watcher Settings
+watcher:
+  debounce_seconds: 2.0
+
+# PDF Conversion Engine: "auto", "word", "libreoffice"
+pdf_conversion:
+  backend: "auto"
+  timeout_seconds: 60
